@@ -1,6 +1,8 @@
 <?php
 
   namespace Twitter;
+  // require "../vendor/autoload.php";
+
   use GuzzleHttp\Client;
   use GuzzleHttp\Exception\RequestExecution;
   use GuzzleHttp\Psr7\Request;
@@ -20,7 +22,7 @@
       * no argument constructor initializes the client
       * using GuzzleHttp Client
       */
-     public function __construct()
+     function __construct()
      {
        $this->client = new \GuzzleHttp\Client();
      }
@@ -51,7 +53,9 @@
               'Authorization'=>'Basic ' .base64_encode($this->token.":".$this->tokensecret),
             "Content-Type"=>"application/x-www-form-urlencoded;charset=UTF-8"
           );
+
             $response = $this->client->post($url, ['query' => $value,'headers' => $header]);
+
             $result = json_decode($response->getBody()->getContents());
             $this->accesstoken = $result->access_token;
       }catch (RequestException $e){
@@ -78,11 +82,12 @@
     {
         $response = array("statuscode" => $e->getResponse()->getStatusCode(),
         "error" => json_decode($e->getResponse()->getBody(true)->getContents()));
-        
+
         return $response;
     }
 
    }
 
+   // $base = new Base();
 
 ?>
