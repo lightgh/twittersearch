@@ -1,7 +1,6 @@
 <?php
 
   namespace Twitter;
-  // require "../vendor/autoload.php";
 
   use GuzzleHttp\Client;
   use GuzzleHttp\Exception\RequestExecution;
@@ -70,6 +69,8 @@
         $this->prepareAccessToken();
         $url = self::API_URL . $request;
         $header = array('Authorization'=>'Bearer '. $this->accesstoken);
+        // var_dump($url, $request, $post);
+        // die("STIO");
         $response = $this->client->request($method, $url, array('query'=> $post, 'headers'=>$header));
         return json_decode($response->getBody()->getContents());
       }catch(RequestException $e){

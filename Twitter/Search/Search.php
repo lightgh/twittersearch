@@ -17,6 +17,12 @@
 		
 		public function search($value)
 		{
+			$hastag_check = mb_substr($value['q'], 0, 1);
+
+			if($hastag_check != "#"){
+				$value['q'] = '#'.$value['q'];
+			}
+
 			try {
 				$url = "/search/tweets.json";
 				$response = $this->callTwitterAPIr("get", $url, $value);
