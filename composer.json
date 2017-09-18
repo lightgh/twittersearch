@@ -1,0 +1,20 @@
+{
+    "name": "lightgh/twittersearchlight",
+    "description": "A package to search through twitter",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Light",
+            "email": "lightchinaka@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "autoload":{
+        "psr-4":{
+            "Twitter\\" : "Twitter/"
+        }
+    }
+}
